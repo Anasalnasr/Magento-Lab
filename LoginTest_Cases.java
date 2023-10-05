@@ -10,34 +10,26 @@ import org.testng.annotations.Test;
 
 public class LoginTest_Cases extends Parameters {
 
-	WebDriver driver = new ChromeDriver();
+    WebDriver driver = new ChromeDriver();
+    Parameters myObject = new Parameters();
 
-	Parameters myObject = new Parameters();
+    @BeforeTest
+    public void myBeforeTest() {
+        driver.get(myUrl);
+    }
 
-	@BeforeTest
-	public void myBeforeTest() {
+    @Test
+    public void myTest() {
+        driver.findElement(By.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]")).click();
+        WebElement emailSignIn = driver.findElement(By.id("email"));
 
-		driver.get(myUrl);
-	}
-	
-	@Test
-	public void myTest() {
-		driver.findElement(By.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]")).click();
-		WebElement emailSignIn = driver.findElement(By.id("email"));
-		WebElement passSignIn = driver.findElement(By.id("pass"));
+        emailSignIn.sendKeys(email);
+        WebElement passSignIn = driver.findElement(By.id("pass"));
+        passSignIn.sendKeys(pasS);
+        driver.findElement(By.id("send2")).click();
+    }
 
-		emailSignIn.sendKeys(email);
-		passSignIn.sendKeys(pasS);
-		driver.findElement(By.id("send2")).click();
-
-		
-		
-	}
-
-	
-
-	@AfterTest
-	public void myAfterTest() {
-	}
-
+    @AfterTest
+    public void myAfterTest() {
+    }
 }

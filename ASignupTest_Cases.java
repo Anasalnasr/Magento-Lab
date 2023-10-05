@@ -8,7 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SignupTest_Cases extends Parameters {
+public class ASignupTest_Cases extends Parameters {
 
 	WebDriver driver = new ChromeDriver();
 
